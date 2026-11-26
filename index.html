@@ -48,47 +48,12 @@
             width: 100%;
         }
 
-        /* 1. Шапка (узкий блок) с фоновым видео */
+        /* 1. Шапка (узкий блок) */
         .block-header {
             padding: 16px 32px;
-            position: relative;
-            overflow: hidden;
-            min-height: 110px;
-        }
-
-        /* Фоновое видео в шапке */
-        .header-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            opacity: 0.22;
-            filter: brightness(0.35) saturate(0.4) contrast(1.1);
-            mix-blend-mode: luminosity;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Затемняющий оверлей поверх видео для лучшей читаемости */
-        .header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(13, 15, 18, 0.75) 0%, rgba(22, 26, 32, 0.55) 100%);
-            z-index: 2;
-            pointer-events: none;
         }
 
         .header-inner {
-            position: relative;
-            z-index: 3;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -174,9 +139,44 @@
             opacity: 0.85;
         }
 
-        /* 2 и 3. Тело сайта (одинаковые блоки) */
-        .block-hero, .block-services {
+        /* 2. Первый блок тела сайта (Главный экран) с фоновым видео */
+        .block-hero {
             padding: 80px 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.22;
+            filter: brightness(0.35) saturate(0.4) contrast(1.1);
+            mix-blend-mode: luminosity;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(13, 15, 18, 0.6) 0%, rgba(22, 26, 32, 0.85) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
         }
 
         .hero-title {
@@ -192,6 +192,11 @@
             font-size: 18px;
             max-width: 700px;
             margin-bottom: 40px;
+        }
+
+        /* 3. Второй блок тела сайта (Услуги) */
+        .block-services {
+            padding: 80px 32px;
         }
 
         .section-title {
@@ -474,12 +479,8 @@
 
     <main class="container">
         
-        <!-- Блок 1: Шапка с фоновым видео -->
+        <!-- Блок 1: Шапка -->
         <header class="block block-header">
-            <video class="header-video" autoplay muted loop playsinline>
-                <source src="hero-bg.mp4" type="video/mp4">
-            </video>
-            <div class="header-overlay"></div>
             <div class="header-inner">
                 <a href="#" class="logo">
                     <div class="logo-mark">
@@ -496,16 +497,22 @@
             </div>
         </header>
 
-        <!-- Блок 2: Тело сайта (Главный экран) -->
+        <!-- Блок 2: Первый блок тела сайта (Главный экран с видео) -->
         <section class="block block-hero">
-            <h1 class="hero-title">Создаём сайты, которые работают на ваш бизнес</h1>
-            <p class="hero-text">
-                Разрабатываем современные, быстрые и удобные веб-решения: от продающих лендингов до сложных корпоративных порталов. Мы превращаем ваши идеи в работающие инструменты.
-            </p>
-            <a href="#contacts" class="btn">Начать сотрудничество</a>
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Создаём сайты, которые работают на ваш бизнес</h1>
+                <p class="hero-text">
+                    Разрабатываем современные, быстрые и удобные веб-решения: от продающих лендингов до сложных корпоративных порталов. Мы превращаем ваши идеи в работающие инструменты.
+                </p>
+                <a href="#contacts" class="btn">Начать сотрудничество</a>
+            </div>
         </section>
 
-        <!-- Блок 3: Тело сайта (Услуги) -->
+        <!-- Блок 3: Второй блок тела сайта (Услуги) -->
         <section class="block block-services" id="services">
             <h2 class="section-title">Наши услуги</h2>
             <p class="section-subtitle">
