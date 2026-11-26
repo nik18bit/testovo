@@ -19,38 +19,36 @@
             --bg-block: #161A20;
             --text-main: #F3F4F6;
             --text-sec: #9CA3AF;
-            --radius: 24px;
         }
 
-        /* Фон страницы и общие отступы */
+        /* Фон страницы и небольшой отступ от краев экрана */
         body {
             background-color: var(--bg-page);
             color: var(--text-main);
             min-height: 100vh;
-            padding: 24px;
+            padding: 16px;
             line-height: 1.6;
         }
 
-        /* Контейнер для центрирования и расположения блоков */
+        /* Контейнер для расположения блоков */
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px;
         }
 
-        /* Базовый стиль для всех блоков */
+        /* Базовый стиль для всех блоков: полная ширина и сглаженные углы */
         .block {
             background-color: var(--bg-block);
-            border-radius: var(--radius);
-            padding: 48px;
+            border-radius: 24px;
+            width: 100%;
             transition: transform 0.3s ease;
         }
 
         /* 1. Шапка (узкий блок) */
         .block-header {
-            padding: 20px 40px;
+            padding: 16px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -58,23 +56,22 @@
             gap: 20px;
         }
 
-        /* Логотип: квадрат со сглаженными углами */
+        /* Логотип: квадрат со скругленными углами и только прописная "E" */
         .logo {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .logo-mark {
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             background-color: var(--text-main);
-            border-radius: 14px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0 6px;
             transition: transform 0.2s ease;
         }
 
@@ -82,26 +79,18 @@
             transform: scale(1.05);
         }
 
-        .logo-mark .logo-e {
+        .logo-e {
             color: var(--bg-block);
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 800;
             line-height: 1;
         }
 
-        .logo-mark .logo-anka {
-            color: var(--bg-block);
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1;
-            margin-left: 1px;
-        }
-
         .logo-text {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 20px;
+            font-weight: 700;
             color: var(--text-main);
-            letter-spacing: -0.3px;
+            letter-spacing: -0.5px;
         }
 
         .logo-text span {
@@ -142,9 +131,9 @@
             opacity: 0.85;
         }
 
-        /* 2 и 3. Тело сайта (одинаковые по высоте и стилю блоки) */
+        /* 2 и 3. Тело сайта (одинаковые по размеру блоки) */
         .block-hero, .block-services {
-            padding: 64px 48px;
+            padding: 80px 48px;
         }
 
         .hero-title {
@@ -177,7 +166,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
@@ -252,19 +241,22 @@
         /* Адаптивность для мобильных устройств */
         @media (max-width: 768px) {
             body {
-                padding: 12px;
+                padding: 10px;
             }
             .block {
-                padding: 32px 24px;
                 border-radius: 18px;
             }
             .block-header {
-                padding: 16px 24px;
+                padding: 16px 20px;
                 flex-direction: column;
                 align-items: flex-start;
             }
             .nav {
                 gap: 20px;
+                flex-wrap: wrap;
+            }
+            .block-hero, .block-services {
+                padding: 48px 24px;
             }
             .hero-title {
                 font-size: 32px;
@@ -273,11 +265,9 @@
                 font-size: 28px;
             }
             .block-contacts {
+                padding: 32px 24px;
                 flex-direction: column;
                 align-items: flex-start;
-            }
-            .logo-text {
-                font-size: 16px;
             }
         }
     </style>
@@ -290,7 +280,7 @@
         <header class="block block-header">
             <a href="#" class="logo">
                 <div class="logo-mark">
-                    <span class="logo-e">E</span><span class="logo-anka">anka</span>
+                    <span class="logo-e">E</span>
                 </div>
                 <div class="logo-text">eanka<span>.ru</span></div>
             </a>
