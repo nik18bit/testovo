@@ -13,7 +13,7 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Плавная прокрутка */
+        /* Плавная прокрутка по всей странице */
         html {
             scroll-behavior: smooth;
         }
@@ -77,7 +77,7 @@
             text-decoration: none;
         }
 
-        /* Вращающийся квадрат логотипа */
+        /* Вращающийся квадрат логотипа — один оборот за 5 секунд с паузой */
         .logo-mark {
             width: 48px;
             height: 48px;
@@ -86,7 +86,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: rotateLogo 5s linear infinite;
+            animation: rotateLogo 5s ease-in-out infinite;
         }
 
         /* Внутренний контейнер для hover-эффекта */
@@ -98,12 +98,15 @@
             transform: scale(1.08);
         }
 
-        /* Анимация вращения логотипа */
+        /* Анимация: быстрый оборот в начале цикла, затем пауза до конца 5 секунд */
         @keyframes rotateLogo {
-            from {
+            0% {
                 transform: rotate(0deg);
             }
-            to {
+            25% {
+                transform: rotate(360deg);
+            }
+            100% {
                 transform: rotate(360deg);
             }
         }
@@ -650,6 +653,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">Портфолио</h2>
+                <button class="btn-close" data-close="portfolio-modal">Назад</button>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
@@ -743,16 +747,29 @@
         </div>
     </div>
 
-    <!-- Модальное окно цен -->
+    <!-- Модальное окно цен (по возрастанию) -->
     <div class="modal-overlay" id="prices-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title">Цены</h2>
+                <button class="btn-close" data-close="prices-modal">Назад</button>
             </div>
             <div class="prices-list">
                 <div class="price-item">
+                    <span class="price-name">Техническая поддержка и доработки</span>
+                    <span class="price-value">от 500 р.</span>
+                </div>
+                <div class="price-item">
                     <span class="price-name">Лендинг (одностраничник)</span>
                     <span class="price-value">от 8 000 р.</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-name">Редизайн сайта</span>
+                    <span class="price-value">от 8 000 р.</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-name">Сайт-визитка (3–7 страниц)</span>
+                    <span class="price-value">от 15 000 р.</span>
                 </div>
                 <div class="price-item">
                     <span class="price-name">Корпоративные сайты</span>
@@ -761,18 +778,6 @@
                 <div class="price-item">
                     <span class="price-name">Интернет-магазины</span>
                     <span class="price-value">от 30 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Сайт-визитка (3–7 страниц)</span>
-                    <span class="price-value">от 15 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Редизайн сайта</span>
-                    <span class="price-value">от 8 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Техническая поддержка и доработки</span>
-                    <span class="price-value">от 500 р.</span>
                 </div>
             </div>
             <div class="modal-footer">
@@ -808,7 +813,7 @@
             openModal('prices-modal');
         });
 
-        // Закрытие по кнопкам "Назад"
+        // Закрытие по кнопкам "Назад" (работает и для верхних, и для нижних кнопок)
         document.querySelectorAll('[data-close]').forEach(function(btn) {
             btn.addEventListener('click', function() {
                 closeModal(this.getAttribute('data-close'));
