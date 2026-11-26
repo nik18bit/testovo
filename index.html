@@ -94,7 +94,7 @@
         }
 
         .logo-text {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 600;
             color: var(--text-main);
             letter-spacing: -0.5px;
@@ -123,8 +123,8 @@
         }
 
         .btn {
-            background-color: var(--text-main);
-            color: var(--bg-block);
+            background-color: var(--logo-bg);
+            color: var(--text-main);
             border: none;
             padding: 12px 24px;
             border-radius: 12px;
@@ -132,11 +132,12 @@
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
         }
 
         .btn:hover {
-            opacity: 0.85;
+            opacity: 0.88;
+            transform: translateY(-1px);
         }
 
         /* 2. Первый блок тела сайта (Главный экран) с фоновым видео */
@@ -343,8 +344,8 @@
         }
 
         .btn-close {
-            background-color: var(--text-main);
-            color: var(--bg-block);
+            background-color: var(--logo-bg);
+            color: var(--text-main);
             border: none;
             padding: 12px 28px;
             border-radius: 12px;
@@ -358,7 +359,7 @@
         }
 
         .btn-close:hover {
-            opacity: 0.85;
+            opacity: 0.88;
         }
 
         .btn-close::before {
@@ -471,6 +472,9 @@
             }
             .portfolio-grid {
                 grid-template-columns: 1fr;
+            }
+            .logo-text {
+                font-size: 20px;
             }
         }
     </style>
