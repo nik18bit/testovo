@@ -19,9 +19,12 @@
             --bg-block: #161A20;
             --text-main: #F3F4F6;
             --text-sec: #9CA3AF;
+            --logo-bg: #7D8E78;
+            --logo-letter: #F5F1E8;
+            --radius: 24px;
         }
 
-        /* Фон страницы и небольшой отступ от краев экрана */
+        /* Фон страницы и небольшие отступы по краям */
         body {
             background-color: var(--bg-page);
             color: var(--text-main);
@@ -38,17 +41,19 @@
             gap: 16px;
         }
 
-        /* Базовый стиль для всех блоков: полная ширина и сглаженные углы */
+        /* Базовый стиль для всех блоков: полная ширина */
         .block {
             background-color: var(--bg-block);
-            border-radius: 24px;
+            border-radius: var(--radius);
             width: 100%;
-            transition: transform 0.3s ease;
         }
 
         /* 1. Шапка (узкий блок) */
         .block-header {
             padding: 16px 32px;
+        }
+
+        .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,19 +61,19 @@
             gap: 20px;
         }
 
-        /* Логотип: квадрат со скругленными углами и только прописная "E" */
+        /* Логотип */
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
         }
 
         .logo-mark {
-            width: 44px;
-            height: 44px;
-            background-color: var(--text-main);
-            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--logo-bg);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,16 +84,18 @@
             transform: scale(1.05);
         }
 
-        .logo-e {
-            color: var(--bg-block);
-            font-size: 26px;
-            font-weight: 800;
+        .logo-mark .logo-e {
+            color: var(--logo-letter);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 30px;
+            font-weight: 400;
             line-height: 1;
         }
 
         .logo-text {
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-main);
             letter-spacing: -0.5px;
         }
@@ -108,6 +115,7 @@
             text-decoration: none;
             font-size: 15px;
             transition: color 0.2s;
+            cursor: pointer;
         }
 
         .nav a:hover {
@@ -131,65 +139,68 @@
             opacity: 0.85;
         }
 
-        /* 2 и 3. Тело сайта (одинаковые по размеру блоки) */
+        /* 2 и 3. Тело сайта (одинаковые блоки) */
         .block-hero, .block-services {
-            padding: 80px 48px;
+            padding: 80px 32px;
         }
 
         .hero-title {
-            font-size: 48px;
+            font-size: 52px;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.15;
             margin-bottom: 24px;
-            max-width: 800px;
+            max-width: 900px;
         }
 
         .hero-text {
             color: var(--text-sec);
             font-size: 18px;
-            max-width: 650px;
+            max-width: 700px;
             margin-bottom: 40px;
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: 40px;
             font-weight: 700;
             margin-bottom: 16px;
         }
 
         .section-subtitle {
             color: var(--text-sec);
-            font-size: 17px;
-            margin-bottom: 40px;
-            max-width: 600px;
+            font-size: 18px;
+            margin-bottom: 48px;
+            max-width: 700px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
         }
 
         .service-card {
             background-color: var(--bg-page);
-            border-radius: 16px;
-            padding: 32px;
+            border-radius: 20px;
+            padding: 36px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .service-card h3 {
-            font-size: 22px;
+            font-size: 24px;
             margin-bottom: 12px;
         }
 
         .service-card p {
             color: var(--text-sec);
-            font-size: 15px;
+            font-size: 16px;
         }
 
-        /* 4. Контакты (более компактный блок) */
+        /* 4. Контакты (блок поменьше) */
         .block-contacts {
-            padding: 40px 48px;
+            padding: 48px 32px;
+        }
+
+        .contacts-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -238,16 +249,157 @@
             color: var(--text-sec);
         }
 
-        /* Адаптивность для мобильных устройств */
+        /* Модальное окно портфолио */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(13, 15, 18, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--bg-block);
+            border-radius: var(--radius);
+            width: 100%;
+            max-width: 1400px;
+            max-height: 90vh;
+            padding: 40px;
+            position: relative;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .btn-close {
+            background-color: var(--text-main);
+            color: var(--bg-block);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-close:hover {
+            opacity: 0.85;
+        }
+
+        .btn-close::before {
+            content: '←';
+            font-size: 18px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .portfolio-item {
+            background-color: var(--bg-page);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-preview {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1e2329 0%, #2a3038 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+        }
+
+        .portfolio-preview span {
+            font-size: 48px;
+            opacity: 0.3;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .portfolio-info p {
+            color: var(--text-sec);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Адаптивность */
         @media (max-width: 768px) {
             body {
-                padding: 10px;
+                padding: 12px;
             }
             .block {
                 border-radius: 18px;
             }
             .block-header {
-                padding: 16px 20px;
+                padding: 16px 24px;
+            }
+            .header-inner {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -255,19 +407,30 @@
                 gap: 20px;
                 flex-wrap: wrap;
             }
-            .block-hero, .block-services {
-                padding: 48px 24px;
-            }
             .hero-title {
                 font-size: 32px;
             }
             .section-title {
                 font-size: 28px;
             }
+            .block-hero, .block-services {
+                padding: 48px 24px;
+            }
             .block-contacts {
-                padding: 32px 24px;
+                padding: 36px 24px;
+            }
+            .contacts-inner {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+            .modal-content {
+                padding: 24px;
+            }
+            .modal-title {
+                font-size: 28px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -278,18 +441,20 @@
         
         <!-- Блок 1: Шапка -->
         <header class="block block-header">
-            <a href="#" class="logo">
-                <div class="logo-mark">
-                    <span class="logo-e">E</span>
-                </div>
-                <div class="logo-text">eanka<span>.ru</span></div>
-            </a>
-            <nav class="nav">
-                <a href="#services">Услуги</a>
-                <a href="#about">О нас</a>
-                <a href="#contacts">Контакты</a>
-            </nav>
-            <a href="#contacts" class="btn">Обсудить проект</a>
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-mark">
+                        <span class="logo-e">e</span>
+                    </div>
+                    <div class="logo-text">eanka<span>.ru</span></div>
+                </a>
+                <nav class="nav">
+                    <a href="#services">Услуги</a>
+                    <a id="portfolio-link">Портфолио</a>
+                    <a href="#contacts">Контакты</a>
+                </nav>
+                <a href="#contacts" class="btn">Обсудить проект</a>
+            </div>
         </header>
 
         <!-- Блок 2: Тело сайта (Главный экран) -->
@@ -325,27 +490,160 @@
 
         <!-- Блок 4: Контакты -->
         <footer class="block block-contacts" id="contacts">
-            <div class="contacts-info">
-                <h2>Свяжитесь с нами</h2>
-                <p>Готовы обсудить ваш проект? Выберите удобный способ связи.</p>
-            </div>
-            <div class="contacts-list">
-                <div class="contact-item">
-                    <span>Электронная почта</span>
-                    <a href="mailto:hello@eanka.ru">hello@eanka.ru</a>
+            <div class="contacts-inner">
+                <div class="contacts-info">
+                    <h2>Свяжитесь с нами</h2>
+                    <p>Готовы обсудить ваш проект? Выберите удобный способ связи.</p>
                 </div>
-                <div class="contact-item">
-                    <span>Телефон</span>
-                    <a href="tel:+79990000000">+7 (999) 000-00-00</a>
-                </div>
-                <div class="contact-item">
-                    <span>Telegram</span>
-                    <a href="https://t.me/eanka" target="_blank">@eanka</a>
+                <div class="contacts-list">
+                    <div class="contact-item">
+                        <span>Электронная почта</span>
+                        <a href="mailto:hello@eanka.ru">hello@eanka.ru</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>Телефон</span>
+                        <a href="tel:+79990000000">+7 (999) 000-00-00</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>Telegram</span>
+                        <a href="https://t.me/eanka" target="_blank">@eanka</a>
+                    </div>
                 </div>
             </div>
         </footer>
 
     </main>
+
+    <!-- Модальное окно портфолио -->
+    <div class="modal-overlay" id="portfolio-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Портфолио</h2>
+                <button class="btn-close" id="close-modal">Назад</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>01</span></div>
+                    <div class="portfolio-info">
+                        <h3>Интернет-магазин одежды</h3>
+                        <p>Современная платформа для онлайн-продаж с удобным каталогом</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>02</span></div>
+                    <div class="portfolio-info">
+                        <h3>Корпоративный сайт</h3>
+                        <p>Многостраничный ресурс для IT-компании с блогом и новостями</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>03</span></div>
+                    <div class="portfolio-info">
+                        <h3>Лендинг для стартапа</h3>
+                        <p>Продающая страница с высокой конверсией и анимациями</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>04</span></div>
+                    <div class="portfolio-info">
+                        <h3>Сайт ресторана</h3>
+                        <p>Стильный ресурс с меню, бронированием и галереей</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>05</span></div>
+                    <div class="portfolio-info">
+                        <h3>Портал недвижимости</h3>
+                        <p>Каталог объектов с фильтрами и картой</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>06</span></div>
+                    <div class="portfolio-info">
+                        <h3>Образовательная платформа</h3>
+                        <p>Система онлайн-курсов с личным кабинетом</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>07</span></div>
+                    <div class="portfolio-info">
+                        <h3>Сайт фитнес-клуба</h3>
+                        <p>Яркий лендинг с расписанием и формой записи</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>08</span></div>
+                    <div class="portfolio-info">
+                        <h3>Медицинский портал</h3>
+                        <p>Сайт клиники с онлайн-записью и услугами</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>09</span></div>
+                    <div class="portfolio-info">
+                        <h3>Туристический сайт</h3>
+                        <p>Платформа для бронирования туров и отелей</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>10</span></div>
+                    <div class="portfolio-info">
+                        <h3>Сайт автосалона</h3>
+                        <p>Каталог автомобилей с фильтрами и кредитным калькулятором</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>11</span></div>
+                    <div class="portfolio-info">
+                        <h3>Портфолио фотографа</h3>
+                        <p>Минималистичный сайт с галереей работ</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-preview"><span>12</span></div>
+                    <div class="portfolio-info">
+                        <h3>Новостной портал</h3>
+                        <p>Современный медиа-ресурс с удобной навигацией</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Открытие модального окна
+        const portfolioLink = document.getElementById('portfolio-link');
+        const modal = document.getElementById('portfolio-modal');
+        const closeModal = document.getElementById('close-modal');
+
+        portfolioLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Закрытие модального окна
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Закрытие при клике на оверлей
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 
 </body>
 </html>
