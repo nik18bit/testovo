@@ -14,11 +14,6 @@
     <meta property="og:locale" content="ru_RU">
     <title>eanka.ru — Студия веб-дизайна в Казани | Создание сайтов</title>
     
-    <!-- Подключение шрифта Playfair Display Italic -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='14' fill='%237D8E78'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='30' fill='%23F5F1E8'%3Ee%3C/text%3E%3C/svg%3E">
     
@@ -248,39 +243,14 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
         }
 
         .hero-services-list li {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+            font-size: 22px;
             font-weight: 400;
             color: var(--text-main);
-            letter-spacing: 0.5px;
-        }
-
-        .hero-services-list li:nth-child(1) {
-            font-size: 24px;
-        }
-
-        .hero-services-list li:nth-child(2) {
-            font-size: 22px;
-        }
-
-        .hero-services-list li:nth-child(3) {
-            font-size: 20px;
-        }
-
-        .hero-services-list li:nth-child(4) {
-            font-size: 18px;
-        }
-
-        .hero-services-list li:nth-child(5) {
-            font-size: 16px;
-        }
-
-        .hero-services-list li:nth-child(6) {
-            font-size: 14px;
+            letter-spacing: 0.3px;
         }
 
         .block-services {
@@ -674,23 +644,8 @@
             .hero-title {
                 font-size: 40px;
             }
-            .hero-services-list li:nth-child(1) {
-                font-size: 20px;
-            }
-            .hero-services-list li:nth-child(2) {
+            .hero-services-list li {
                 font-size: 18px;
-            }
-            .hero-services-list li:nth-child(3) {
-                font-size: 16px;
-            }
-            .hero-services-list li:nth-child(4) {
-                font-size: 14px;
-            }
-            .hero-services-list li:nth-child(5) {
-                font-size: 13px;
-            }
-            .hero-services-list li:nth-child(6) {
-                font-size: 12px;
             }
             .block-hero {
                 padding: 90px 24px;
@@ -742,6 +697,9 @@
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 32px;
+            }
+            .hero-services-list li {
+                font-size: 16px;
             }
             .nav {
                 gap: 16px;
