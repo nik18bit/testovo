@@ -746,20 +746,20 @@
             .burger {
                 display: flex;
             }
-            /* Скрываем только кнопку телефона в шапке, не затрагивая другие кнопки */
             .block-header .btn {
                 display: none;
             }
-            /* Скрываем иконки контактов в подвале на мобильных */
             .contacts-icons {
                 display: none;
             }
-            /* Плавающая панель видна только на мобильных */
             .floating-contacts {
                 display: flex;
             }
+            /* Текст в hero-блоке в верхнем левом углу на мобильных */
             .block-hero {
                 min-height: calc(100vh - 160px);
+                align-items: flex-start;
+                padding: 40px 24px;
             }
             .section-title {
                 font-size: 28px;
