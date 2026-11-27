@@ -87,15 +87,8 @@
             width: 100%;
         }
 
-        /* Закреплённая шапка */
         .block-header {
             padding: 16px 32px;
-            position: sticky;
-            top: 16px;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background-color: rgba(22, 26, 32, 0.85);
         }
 
         .header-inner {
@@ -197,7 +190,6 @@
             transform: translateY(-1px);
         }
 
-        /* Адаптивный hero-блок — всегда виден целиком */
         .block-hero {
             position: relative;
             overflow: hidden;
@@ -218,7 +210,7 @@
             transform: translate(-50%, -50%);
             object-fit: cover;
             opacity: 0.42;
-            filter: brightness(0.65) saturate(0.75) contrast(1.05);
+            filter: brightness(0.72) saturate(0.75) contrast(1.05);
             mix-blend-mode: normal;
             pointer-events: none;
             z-index: 1;
@@ -641,7 +633,6 @@
             }
             .block-header {
                 padding: 16px 24px;
-                top: 12px;
             }
             .header-inner {
                 flex-direction: column;
