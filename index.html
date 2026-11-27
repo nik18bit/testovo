@@ -63,6 +63,7 @@
             --tg-color: #2AABEE;
             --wa-color: #25D366;
             --mail-color: #7D8E78;
+            --phone-color: #F5D76E;
         }
 
         body {
@@ -189,17 +190,6 @@
             transform: translateY(-1px);
         }
 
-        .btn-outline {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid rgba(243, 244, 246, 0.2);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--logo-bg);
-            border-color: var(--logo-bg);
-        }
-
         .block-hero {
             padding: 160px 32px;
             min-height: 480px;
@@ -246,14 +236,21 @@
             font-size: 64px;
             font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
         }
 
-        .hero-subtitle {
-            font-size: 24px;
-            font-weight: 400;
+        .hero-services-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hero-services-list li {
+            font-size: 20px;
             color: var(--text-sec);
-            letter-spacing: 0.5px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
         .block-services {
@@ -273,7 +270,6 @@
             max-width: 700px;
         }
 
-        /* Список услуг */
         .services-list {
             display: flex;
             flex-direction: column;
@@ -312,7 +308,6 @@
             margin-left: 24px;
         }
 
-        /* Блок портфолио */
         .block-portfolio {
             padding: 80px 32px;
         }
@@ -320,72 +315,13 @@
         .portfolio-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
             flex-wrap: wrap;
             gap: 24px;
-            margin-bottom: 48px;
         }
 
-        .portfolio-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        .portfolio-preview-card {
-            background-color: var(--bg-page);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .portfolio-preview-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        .portfolio-preview-thumb {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #1e2329 0%, #2a3038 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-preview-thumb::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
-        }
-
-        .portfolio-preview-thumb span {
-            font-size: 48px;
-            opacity: 0.3;
-        }
-
-        .portfolio-preview-info {
-            padding: 20px;
-        }
-
-        .portfolio-preview-info h3 {
-            font-size: 18px;
-            margin-bottom: 6px;
-            color: var(--text-main);
-        }
-
-        .portfolio-preview-info p {
-            color: var(--text-sec);
-            font-size: 14px;
-            line-height: 1.4;
+        .portfolio-header-text {
+            max-width: 700px;
         }
 
         .block-contacts {
@@ -472,6 +408,14 @@
             background-color: var(--mail-color);
         }
 
+        .contact-icon.phone {
+            background-color: var(--phone-color);
+        }
+
+        .contact-icon.phone svg {
+            fill: #1a1a1a;
+        }
+
         .footer-info {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 24px;
@@ -509,7 +453,6 @@
             color: var(--text-main);
         }
 
-        /* Модальные окна */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -701,8 +644,8 @@
             .hero-title {
                 font-size: 40px;
             }
-            .hero-subtitle {
-                font-size: 18px;
+            .hero-services-list li {
+                font-size: 17px;
             }
             .block-hero {
                 padding: 90px 24px;
@@ -794,7 +737,14 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1 class="hero-title">Создаём сайты</h1>
-                <div class="hero-subtitle">интернет-магазины</div>
+                <ul class="hero-services-list">
+                    <li>Техническая поддержка и доработка</li>
+                    <li>Корпоративные сайты</li>
+                    <li>Интернет-магазины</li>
+                    <li>Редизайн сайтов</li>
+                    <li>Сайты-визитки</li>
+                    <li>Лендинги</li>
+                </ul>
             </div>
         </section>
 
@@ -833,36 +783,13 @@
 
         <section class="block block-portfolio" id="portfolio">
             <div class="portfolio-header">
-                <div>
+                <div class="portfolio-header-text">
                     <h2 class="section-title">Портфолио</h2>
                     <p class="section-subtitle" style="margin-bottom: 0;">
                         Примеры наших работ: от лендингов до крупных интернет-магазинов.
                     </p>
                 </div>
                 <button class="btn" id="open-portfolio">Смотреть портфолио</button>
-            </div>
-            <div class="portfolio-preview-grid">
-                <div class="portfolio-preview-card">
-                    <div class="portfolio-preview-thumb"><span>01</span></div>
-                    <div class="portfolio-preview-info">
-                        <h3>Интернет-магазин одежды</h3>
-                        <p>Современная платформа для онлайн-продаж</p>
-                    </div>
-                </div>
-                <div class="portfolio-preview-card">
-                    <div class="portfolio-preview-thumb"><span>02</span></div>
-                    <div class="portfolio-preview-info">
-                        <h3>Корпоративный сайт</h3>
-                        <p>Многостраничный ресурс для IT-компании</p>
-                    </div>
-                </div>
-                <div class="portfolio-preview-card">
-                    <div class="portfolio-preview-thumb"><span>03</span></div>
-                    <div class="portfolio-preview-info">
-                        <h3>Лендинг для стартапа</h3>
-                        <p>Продающая страница с высокой конверсией</p>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -885,6 +812,9 @@
                     <a href="mailto:eanka-info@mail.ru" class="contact-icon mail" aria-label="Почта">
                         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     </a>
+                    <a href="tel:+79272497922" class="contact-icon phone" aria-label="Позвонить">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </a>
                 </div>
             </div>
             <div class="footer-info">
@@ -900,7 +830,7 @@
 
     </main>
 
-    <!-- Модальное окно портфолио (полное) -->
+    <!-- Модальное окно портфолио -->
     <div class="modal-overlay" id="portfolio-modal">
         <div class="modal-content">
             <div class="modal-header">
