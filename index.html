@@ -798,6 +798,10 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            /* Скрыть верхнюю кнопку "Назад" в модалке политики на мобильных */
+            #privacy-modal .modal-header .btn-close {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
