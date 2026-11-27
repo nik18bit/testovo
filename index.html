@@ -87,8 +87,15 @@
             width: 100%;
         }
 
+        /* Закреплённая шапка */
         .block-header {
             padding: 16px 32px;
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(22, 26, 32, 0.85);
         }
 
         .header-inner {
@@ -190,13 +197,14 @@
             transform: translateY(-1px);
         }
 
+        /* Адаптивный hero-блок — всегда виден целиком */
         .block-hero {
-            padding: 144px 32px;
-            min-height: 432px;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
+            min-height: calc(100vh - 144px);
+            padding: clamp(40px, 8vh, 120px) clamp(24px, 4vw, 64px);
         }
 
         .hero-video {
@@ -230,24 +238,25 @@
         .hero-content {
             position: relative;
             z-index: 3;
+            width: 100%;
         }
 
         .hero-title {
-            font-size: 64px;
+            font-size: clamp(32px, 6vw, 64px);
             font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: clamp(12px, 2vh, 24px);
         }
 
         .hero-services-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: clamp(6px, 1vh, 12px);
         }
 
         .hero-services-list li {
-            font-size: 22px;
+            font-size: clamp(14px, 2vw, 22px);
             font-weight: 400;
             color: var(--text-main);
             letter-spacing: 0.3px;
@@ -632,6 +641,7 @@
             }
             .block-header {
                 padding: 16px 24px;
+                top: 12px;
             }
             .header-inner {
                 flex-direction: column;
@@ -641,20 +651,13 @@
                 gap: 20px;
                 flex-wrap: wrap;
             }
-            .hero-title {
-                font-size: 40px;
-            }
-            .hero-services-list li {
-                font-size: 18px;
-            }
             .block-hero {
-                padding: 81px 24px;
-                min-height: 324px;
+                min-height: calc(100vh - 160px);
             }
             .section-title {
                 font-size: 28px;
             }
-            .block-hero, .block-services, .block-portfolio {
+            .block-services, .block-portfolio {
                 padding: 48px 24px;
             }
             .block-contacts {
@@ -695,12 +698,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title {
-                font-size: 32px;
-            }
-            .hero-services-list li {
-                font-size: 16px;
-            }
             .nav {
                 gap: 16px;
             }
