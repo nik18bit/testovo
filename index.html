@@ -189,6 +189,17 @@
             transform: translateY(-1px);
         }
 
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid rgba(243, 244, 246, 0.2);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--logo-bg);
+            border-color: var(--logo-bg);
+        }
+
         .block-hero {
             padding: 160px 32px;
             min-height: 480px;
@@ -235,6 +246,14 @@
             font-size: 64px;
             font-weight: 700;
             line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--text-sec);
+            letter-spacing: 0.5px;
         }
 
         .block-services {
@@ -254,48 +273,119 @@
             max-width: 700px;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .service-card {
-            background-color: var(--bg-page);
-            border-radius: 20px;
-            padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* Список услуг */
+        .services-list {
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            gap: 0;
+            max-width: 900px;
         }
 
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        .service-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: padding-left 0.2s ease;
         }
 
-        .service-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+        .service-row:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .service-row:hover {
+            padding-left: 12px;
+        }
+
+        .service-row-name {
+            font-size: 20px;
+            font-weight: 500;
             color: var(--text-main);
         }
 
-        .service-card p {
-            color: var(--text-sec);
-            font-size: 15px;
-            line-height: 1.5;
-            flex-grow: 1;
-            margin-bottom: 20px;
-        }
-
-        .service-price {
+        .service-row-price {
             font-size: 20px;
             font-weight: 700;
             color: var(--logo-bg);
             white-space: nowrap;
-            padding-top: 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-left: 24px;
+        }
+
+        /* Блок портфолио */
+        .block-portfolio {
+            padding: 80px 32px;
+        }
+
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .portfolio-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-preview-card {
+            background-color: var(--bg-page);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-preview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-preview-thumb {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1e2329 0%, #2a3038 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-preview-thumb::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+        }
+
+        .portfolio-preview-thumb span {
+            font-size: 48px;
+            opacity: 0.3;
+        }
+
+        .portfolio-preview-info {
+            padding: 20px;
+        }
+
+        .portfolio-preview-info h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .portfolio-preview-info p {
+            color: var(--text-sec);
+            font-size: 14px;
+            line-height: 1.4;
         }
 
         .block-contacts {
@@ -314,11 +404,6 @@
         .contacts-info h2 {
             font-size: 28px;
             margin-bottom: 8px;
-        }
-
-        .contacts-info p {
-            color: var(--text-sec);
-            font-size: 16px;
         }
 
         .contacts-details {
@@ -424,6 +509,7 @@
             color: var(--text-main);
         }
 
+        /* Модальные окна */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -521,7 +607,7 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .portfolio-preview {
+        .portfolio-item .portfolio-preview {
             width: 100%;
             height: 200px;
             background: linear-gradient(135deg, #1e2329 0%, #2a3038 100%);
@@ -532,7 +618,7 @@
             overflow: hidden;
         }
 
-        .portfolio-preview::before {
+        .portfolio-item .portfolio-preview::before {
             content: '';
             position: absolute;
             top: 0;
@@ -542,22 +628,22 @@
             background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
         }
 
-        .portfolio-preview span {
+        .portfolio-item .portfolio-preview span {
             font-size: 48px;
             opacity: 0.3;
         }
 
-        .portfolio-info {
+        .portfolio-item .portfolio-info {
             padding: 20px;
         }
 
-        .portfolio-info h3 {
+        .portfolio-item .portfolio-info h3 {
             font-size: 18px;
             margin-bottom: 8px;
             color: var(--text-main);
         }
 
-        .portfolio-info p {
+        .portfolio-item .portfolio-info p {
             color: var(--text-sec);
             font-size: 14px;
             line-height: 1.5;
@@ -615,6 +701,9 @@
             .hero-title {
                 font-size: 40px;
             }
+            .hero-subtitle {
+                font-size: 18px;
+            }
             .block-hero {
                 padding: 90px 24px;
                 min-height: 360px;
@@ -622,7 +711,7 @@
             .section-title {
                 font-size: 28px;
             }
-            .block-hero, .block-services {
+            .block-hero, .block-services, .block-portfolio {
                 padding: 48px 24px;
             }
             .block-contacts {
@@ -647,6 +736,18 @@
             }
             .logo-text {
                 font-size: 20px;
+            }
+            .service-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .service-row-price {
+                margin-left: 0;
+            }
+            .portfolio-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
@@ -679,7 +780,7 @@
                 </a>
                 <nav class="nav">
                     <a href="#services">Услуги</a>
-                    <a id="portfolio-link">Портфолио</a>
+                    <a href="#portfolio">Портфолио</a>
                     <a href="#contacts">Контакты</a>
                 </nav>
                 <a href="tel:+79272497922" class="btn">+7 (927) 249-79-22</a>
@@ -693,44 +794,74 @@
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1 class="hero-title">Создаём сайты</h1>
+                <div class="hero-subtitle">интернет-магазины</div>
             </div>
         </section>
 
         <section class="block block-services" id="services">
             <h2 class="section-title">Наши услуги</h2>
             <p class="section-subtitle">
-                Мы предлагаем полный цикл разработки: от проектирования дизайна до запуска и технической поддержки вашего проекта.
+                Полный цикл разработки: от проектирования дизайна до запуска и технической поддержки вашего проекта.
             </p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Техническая поддержка и доработки</h3>
-                    <p>Оперативное решение технических задач, исправление ошибок и развитие вашего проекта.</p>
-                    <div class="service-price">от 500 р.</div>
+            <div class="services-list">
+                <div class="service-row">
+                    <span class="service-row-name">Техническая поддержка и доработки</span>
+                    <span class="service-row-price">от 500 р.</span>
                 </div>
-                <div class="service-card">
-                    <h3>Лендинг (одностраничник)</h3>
-                    <p>Продающие одностраничные сайты с высокой конверсией и продуманной структурой.</p>
-                    <div class="service-price">от 8 000 р.</div>
+                <div class="service-row">
+                    <span class="service-row-name">Лендинг (одностраничник)</span>
+                    <span class="service-row-price">от 8 000 р.</span>
                 </div>
-                <div class="service-card">
-                    <h3>Редизайн сайта</h3>
-                    <p>Обновление внешнего вида, улучшение UX и адаптация под современные стандарты.</p>
-                    <div class="service-price">от 8 000 р.</div>
+                <div class="service-row">
+                    <span class="service-row-name">Редизайн сайта</span>
+                    <span class="service-row-price">от 8 000 р.</span>
                 </div>
-                <div class="service-card">
-                    <h3>Сайт-визитка (3–7 страниц)</h3>
-                    <p>Компактные многостраничные ресурсы для эффективного представления вашей компании.</p>
-                    <div class="service-price">от 15 000 р.</div>
+                <div class="service-row">
+                    <span class="service-row-name">Сайт-визитка (3–7 страниц)</span>
+                    <span class="service-row-price">от 15 000 р.</span>
                 </div>
-                <div class="service-card">
-                    <h3>Корпоративные сайты</h3>
-                    <p>Многостраничные ресурсы с уникальным дизайном для серьёзного бизнеса.</p>
-                    <div class="service-price">от 30 000 р.</div>
+                <div class="service-row">
+                    <span class="service-row-name">Корпоративные сайты</span>
+                    <span class="service-row-price">от 30 000 р.</span>
                 </div>
-                <div class="service-card">
-                    <h3>Интернет-магазины</h3>
-                    <p>Удобные и масштабируемые платформы для эффективных онлайн-продаж.</p>
-                    <div class="service-price">от 30 000 р.</div>
+                <div class="service-row">
+                    <span class="service-row-name">Интернет-магазины</span>
+                    <span class="service-row-price">от 30 000 р.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="block block-portfolio" id="portfolio">
+            <div class="portfolio-header">
+                <div>
+                    <h2 class="section-title">Портфолио</h2>
+                    <p class="section-subtitle" style="margin-bottom: 0;">
+                        Примеры наших работ: от лендингов до крупных интернет-магазинов.
+                    </p>
+                </div>
+                <button class="btn" id="open-portfolio">Смотреть портфолио</button>
+            </div>
+            <div class="portfolio-preview-grid">
+                <div class="portfolio-preview-card">
+                    <div class="portfolio-preview-thumb"><span>01</span></div>
+                    <div class="portfolio-preview-info">
+                        <h3>Интернет-магазин одежды</h3>
+                        <p>Современная платформа для онлайн-продаж</p>
+                    </div>
+                </div>
+                <div class="portfolio-preview-card">
+                    <div class="portfolio-preview-thumb"><span>02</span></div>
+                    <div class="portfolio-preview-info">
+                        <h3>Корпоративный сайт</h3>
+                        <p>Многостраничный ресурс для IT-компании</p>
+                    </div>
+                </div>
+                <div class="portfolio-preview-card">
+                    <div class="portfolio-preview-thumb"><span>03</span></div>
+                    <div class="portfolio-preview-info">
+                        <h3>Лендинг для стартапа</h3>
+                        <p>Продающая страница с высокой конверсией</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -739,7 +870,6 @@
             <div class="contacts-inner">
                 <div class="contacts-info">
                     <h2>Свяжитесь с нами</h2>
-                    <p>Готовы обсудить ваш проект? Выберите удобный способ связи.</p>
                     <div class="contacts-details">
                         <a href="tel:+79272497922">+7 (927) 249-79-22</a>
                         <a href="mailto:eanka-info@mail.ru" class="email-link">eanka-info@mail.ru</a>
@@ -760,7 +890,7 @@
             <div class="footer-info">
                 <div class="footer-text">
                     <strong>Студия веб-дизайна eanka.ru</strong><br>
-                    Казань
+                    Казань · © 2026
                 </div>
                 <div class="footer-links">
                     <a id="privacy-link">Политика конфиденциальности</a>
@@ -770,6 +900,7 @@
 
     </main>
 
+    <!-- Модальное окно портфолио (полное) -->
     <div class="modal-overlay" id="portfolio-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -868,6 +999,7 @@
         </div>
     </div>
 
+    <!-- Модальное окно политики конфиденциальности -->
     <div class="modal-overlay" id="privacy-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -925,8 +1057,7 @@
             document.body.style.overflow = '';
         }
 
-        document.getElementById('portfolio-link').addEventListener('click', function(e) {
-            e.preventDefault();
+        document.getElementById('open-portfolio').addEventListener('click', function() {
             openModal('portfolio-modal');
         });
 
