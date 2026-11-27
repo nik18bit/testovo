@@ -263,18 +263,39 @@
         .service-card {
             background-color: var(--bg-page);
             border-radius: 20px;
-            padding: 36px;
+            padding: 32px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
         .service-card h3 {
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 12px;
+            color: var(--text-main);
         }
 
         .service-card p {
             color: var(--text-sec);
-            font-size: 16px;
+            font-size: 15px;
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--logo-bg);
+            white-space: nowrap;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .block-contacts {
@@ -549,41 +570,6 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .prices-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .price-item {
-            background-color: var(--bg-page);
-            border-radius: 16px;
-            padding: 24px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.2s ease;
-        }
-
-        .price-item:hover {
-            transform: translateX(4px);
-        }
-
-        .price-name {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text-main);
-        }
-
-        .price-value {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--logo-bg);
-            white-space: nowrap;
-        }
-
         .privacy-content {
             color: var(--text-sec);
             line-height: 1.8;
@@ -659,12 +645,6 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
-            .price-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-                padding: 20px 24px;
-            }
             .logo-text {
                 font-size: 20px;
             }
@@ -700,7 +680,6 @@
                 <nav class="nav">
                     <a href="#services">Услуги</a>
                     <a id="portfolio-link">Портфолио</a>
-                    <a id="prices-link">Цены</a>
                     <a href="#contacts">Контакты</a>
                 </nav>
                 <a href="tel:+79272497922" class="btn">+7 (927) 249-79-22</a>
@@ -724,16 +703,34 @@
             </p>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Лендинги</h3>
+                    <h3>Техническая поддержка и доработки</h3>
+                    <p>Оперативное решение технических задач, исправление ошибок и развитие вашего проекта.</p>
+                    <div class="service-price">от 500 р.</div>
+                </div>
+                <div class="service-card">
+                    <h3>Лендинг (одностраничник)</h3>
                     <p>Продающие одностраничные сайты с высокой конверсией и продуманной структурой.</p>
+                    <div class="service-price">от 8 000 р.</div>
+                </div>
+                <div class="service-card">
+                    <h3>Редизайн сайта</h3>
+                    <p>Обновление внешнего вида, улучшение UX и адаптация под современные стандарты.</p>
+                    <div class="service-price">от 8 000 р.</div>
+                </div>
+                <div class="service-card">
+                    <h3>Сайт-визитка (3–7 страниц)</h3>
+                    <p>Компактные многостраничные ресурсы для эффективного представления вашей компании.</p>
+                    <div class="service-price">от 15 000 р.</div>
                 </div>
                 <div class="service-card">
                     <h3>Корпоративные сайты</h3>
                     <p>Многостраничные ресурсы с уникальным дизайном для серьёзного бизнеса.</p>
+                    <div class="service-price">от 30 000 р.</div>
                 </div>
                 <div class="service-card">
                     <h3>Интернет-магазины</h3>
                     <p>Удобные и масштабируемые платформы для эффективных онлайн-продаж.</p>
+                    <div class="service-price">от 30 000 р.</div>
                 </div>
             </div>
         </section>
@@ -871,43 +868,6 @@
         </div>
     </div>
 
-    <div class="modal-overlay" id="prices-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Цены</h2>
-            </div>
-            <div class="prices-list">
-                <div class="price-item">
-                    <span class="price-name">Техническая поддержка и доработки</span>
-                    <span class="price-value">от 500 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Лендинг (одностраничник)</span>
-                    <span class="price-value">от 8 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Редизайн сайта</span>
-                    <span class="price-value">от 8 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Сайт-визитка (3–7 страниц)</span>
-                    <span class="price-value">от 15 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Корпоративные сайты</span>
-                    <span class="price-value">от 30 000 р.</span>
-                </div>
-                <div class="price-item">
-                    <span class="price-name">Интернет-магазины</span>
-                    <span class="price-value">от 30 000 р.</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-close" data-close="prices-modal">Назад</button>
-            </div>
-        </div>
-    </div>
-
     <div class="modal-overlay" id="privacy-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -968,11 +928,6 @@
         document.getElementById('portfolio-link').addEventListener('click', function(e) {
             e.preventDefault();
             openModal('portfolio-modal');
-        });
-
-        document.getElementById('prices-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            openModal('prices-modal');
         });
 
         document.getElementById('privacy-link').addEventListener('click', function(e) {
